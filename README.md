@@ -128,6 +128,9 @@ Equipe:
 - Orlando Oliveira (Cliente fictício)
 - Felipe Santos (Cliente fictício)
 
+-Emanuelle Godinho (Developer)
+-Luana Lopes Reis (Developer)
+-Pedro Seti (Scrum Master)
 ---
 
 ## Licença
