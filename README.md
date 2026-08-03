@@ -104,6 +104,15 @@ O modelo contempla informações relacionadas às vacas, bezerros, despesas, ins
 
 **Arquivo PlantUML:** [diagrama_banco.puml](diagrama_banco.puml)
 
+## Diagrama de Contexto (C4 - Nível 1)
+
+Este diagrama representa a visão geral do sistema, mostrando o produtor rural como usuário principal e sua interação com o Sistema de Controle de Custo de Produção de Vaca Parida e Cria.
+
+### Diagrama
+
+![Diagrama de Contexto](contexto.png)
+
+**Arquivo PlantUML:** `contexto.puml`
 ---
 
 ## Estrutura do Projeto
