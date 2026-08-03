@@ -1,0 +1,57 @@
+@startuml banco
+
+title Diagrama Entidade-Relacionamento - Custo de Produção de Vaca Parida e Cria
+
+entity "VACA" as vaca {
+  * id_vaca : INTEGER <<PK>>
+  --
+  brinco : TEXT
+  data_nascimento : DATE
+  raca : TEXT
+  data_entrada : DATE
+}
+
+entity "BEZERRO" as bezerro {   
+  * id_bezerro : INTEGER <<PK>>
+  --
+  id_vaca : INTEGER <<FK>>
+  sexo : TEXT
+  data_nascimento : DATE
+  data_desmame : DATE
+  peso_desmame : DECIMAL
+}
+
+entity "DESPESA" as despesa {
+  * id_despesa : INTEGER <<PK>>
+  --
+  id_vaca : INTEGER <<FK>>
+  tipo : TEXT
+  descricao : TEXT
+  data : DATE
+  valor : DECIMAL
+}
+
+entity "INSUMO" as insumo {
+  * id_insumo : INTEGER <<PK>>
+  --
+  nome : TEXT
+  unidade : TEXT
+  valor_unitario : DECIMAL
+}
+
+entity "CONSUMO_INSUMO" as consumo {
+  * id_consumo : INTEGER <<PK>>
+  --
+  id_vaca : INTEGER <<FK>>
+  id_insumo : INTEGER <<FK>>
+  quantidade : DECIMAL
+  data : DATE
+  custo : DECIMAL
+}
+
+vaca ||--o{ bezerro : "produz"
+vaca ||--o{ despesa : "possui"
+vaca ||--o{ consumo : "consome"
+insumo ||--o{ consumo : "é utilizado em"
+
+@enduml
