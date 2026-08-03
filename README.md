@@ -1,5 +1,3 @@
-# vaca_parida
-````markdown
 # Sistema de Controle de Custo de Produção de Vaca Parida e Cria
 
 ## Descrição
@@ -34,23 +32,27 @@ Desenvolver uma aplicação que possibilite:
 ## Funcionalidades
 
 ### Cadastro
+
 - Cadastrar vacas;
 - Cadastrar bezerros;
 - Associar o bezerro à sua matriz.
 
 ### Controle de Custos
+
 - Registrar despesas sanitárias;
 - Registrar suplementação mineral;
 - Registrar medicamentos;
 - Atualizar ou excluir despesas cadastradas.
 
 ### Consultas
+
 - Consultar custos por vaca;
 - Consultar custos por bezerro;
 - Consultar despesas por período;
 - Visualizar histórico de manejos.
 
 ### Relatórios
+
 - Relatório de custo individual por vaca;
 - Relatório de custo por bezerro;
 - Relatório geral de custos da propriedade.
@@ -84,9 +86,29 @@ Desenvolver uma aplicação que possibilite:
 
 ---
 
+# Arquitetura do Sistema
+
+A arquitetura do sistema foi planejada antes do início do desenvolvimento, com o objetivo de representar a estrutura técnica, os dados e os principais componentes envolvidos no funcionamento da aplicação.
+
+Os diagramas foram desenvolvidos utilizando a linguagem **PlantUML** e estão disponíveis na raiz deste repositório em formato `.puml`.
+
+## Diagrama Entidade-Relacionamento (DER)
+
+O Diagrama Entidade-Relacionamento representa a estrutura dos dados que serão utilizados pelo sistema.
+
+O modelo contempla informações relacionadas às vacas, bezerros, despesas, insumos e consumo de insumos, permitindo organizar os dados necessários para o controle dos custos de produção.
+
+### Diagrama
+
+![Diagrama Entidade-Relacionamento](diagrama_banco.png)
+
+**Arquivo PlantUML:** [diagrama_banco.puml](diagrama_banco.puml)
+
+---
+
 ## Estrutura do Projeto
 
-```
+```text
 src/
 │
 ├── model/
@@ -94,47 +116,3 @@ src/
 ├── controller/
 ├── view/
 └── util/
-```
-
----
-
-## Requisitos Funcionais
-
-- Cadastro de matrizes;
-- Cadastro de bezerros;
-- Registro de despesas;
-- Atualização e exclusão de registros;
-- Consulta de custos;
-- Emissão de relatórios.
-
----
-
-## Requisitos Não Funcionais
-
-- Interface simples e intuitiva;
-- Sistema de fácil utilização;
-- Armazenamento seguro dos dados;
-- Boa performance para consultas;
-- Facilidade de manutenção.
-
----
-
-## Autores
-
-Projeto desenvolvido para a disciplina de Engenharia de Software.
-
-Equipe:
-- Francisco Silva (Cliente fictício)
-- Orlando Oliveira (Cliente fictício)
-- Felipe Santos (Cliente fictício)
-
--Emanuelle Godinho (Developer)
--Luana Lopes Reis (Developer)
--Pedro Seti (Scrum Master)
----
-
-## Licença
-
-Projeto desenvolvido exclusivamente para fins acadêmicos.
-````
-
