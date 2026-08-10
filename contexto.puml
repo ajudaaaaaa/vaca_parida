@@ -1,0 +1,15 @@
+@startuml c4
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+title Sistema de Controle de Custo de Produção de Vaca Parida e Cria
+
+Person(produtor, "Produtor Rural", "Responsável pelo controle dos custos da produção.")
+
+System(sistema, "Sistema de Controle de Custos", "Gerencia vacas, bezerros, despesas e calcula o custo de produção.")
+
+System_Ext(insumos, "Insumos Agropecuários", "Medicamentos, vacinas e suplementação mineral.")
+
+Rel(produtor, sistema, "Utiliza")
+Rel(sistema, insumos, "Registra consumo de")
+
+@enduml

@@ -1,0 +1,37 @@
+@startuml fluxograma
+
+title Fluxograma do Processo de Cálculo do Custo de Produção por Bezerro
+
+start
+
+:Selecionar a vaca (matriz);
+
+:Registrar despesas de manejo sanitário;
+
+:Registrar despesas com suplementação mineral;
+
+:Registrar outros custos relacionados à matriz;
+
+:Associar o bezerro à vaca;
+
+:Somar as despesas e custos registrados;
+
+if (Bezerro foi desmamado?) then (Sim)
+
+    :Calcular o custo acumulado da matriz e da cria;
+
+    :Associar o custo total ao bezerro;
+
+    :Exibir custo de produção por bezerro;
+
+else (Não)
+
+    :Manter os custos acumulados;
+
+    :Aguardar o desmame do bezerro;
+
+endif
+
+stop
+
+@enduml
