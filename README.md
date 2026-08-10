@@ -115,6 +115,43 @@ Este diagrama representa a visão geral do sistema, mostrando o produtor rural c
 **Arquivo PlantUML:** `contexto.puml`
 ---
 
+
+# Arquitetura do Sistema
+
+A arquitetura do sistema foi modelada utilizando **PlantUML**, permitindo documentar a estrutura técnica, o banco de dados e o fluxo do processo de cálculo do custo de produção da vaca parida e sua cria.
+
+## Diagramas desenvolvidos
+
+### Diagrama de Contexto (C4 Nível 1)
+
+Representa a interação entre o produtor rural e o sistema.
+
+![Diagrama de Contexto](diagram.png)
+
+Arquivo PlantUML: `contexto.puml`
+
+### Diagrama de Banco de Dados (DER)
+
+Representa as entidades do sistema, incluindo vacas, bezerros, despesas e insumos.
+
+![Diagrama de Banco de Dados](diagrama_banco.png)
+
+Arquivo PlantUML: `diagrama_banco.puml`
+
+### Fluxograma do Processo do Agro
+
+Representa o processo de cálculo do custo acumulado por bezerro produzido.
+
+![Fluxograma do Processo do Agro](fluxo_calculo.png)
+
+Arquivo PlantUML: `fluxo_calculo.puml`
+
+## Responsáveis pelos diagramas
+
+* **Diagrama de Contexto (C4 Nível 1):** [Nome do integrante]
+* **Diagrama de Banco de Dados (DER):** Pedro Manoel Rebelo Seti
+* **Fluxograma do Processo do Agro:** [Nome do integrante]
+
 ## Estrutura do Projeto
 
 ```text
