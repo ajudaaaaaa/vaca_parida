@@ -152,6 +152,12 @@ Arquivo PlantUML: `fluxo_calculo.puml`
 * **Diagrama de Banco de Dados (DER):** Pedro Manoel Rebelo Seti
 * **Fluxograma do Processo do Agro:** [Nome do integrante]
 
+## Desenvolvedores
+
+Emanuelle Cassol de Souza Godinho
+Luana Lopes Reis
+Pedro Manoel Rebelo Seti
+
 ## Estrutura do Projeto
 
 ```text
