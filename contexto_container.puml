@@ -1,0 +1,26 @@
+@startuml container 
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Diagrama de Contêiner (C4 Nível 2) - Sistema de Controle de Custo de Produção de Vaca Parida e Cria
+
+Person(produtor, "Produtor Rural", "Responsável por registrar vacas, bezerros e despesas de produção.")
+
+System_Boundary(sistema, "Sistema de Controle de Custo de Produção") {
+
+    Container(frontend, "Interface Web", "HTML/CSS/JavaScript",
+    "Permite cadastrar vacas, bezerros, despesas, suplementação e consultar relatórios.")
+
+    Container(backend, "Servidor da Aplicação", "Python / Flask",
+    "Processa regras de negócio, calcula o custo acumulado por bezerro e gerencia os dados do sistema.")
+
+    ContainerDb(database, "Banco de Dados", "MySQL",
+    "Armazena informações de vacas, bezerros, despesas, insumos e custos de produção.")
+}
+
+Rel(produtor, frontend, "Utiliza o sistema", "HTTPS")
+
+Rel(frontend, backend, "Envia dados e solicita cálculos", "HTTP/HTTPS")
+
+Rel(backend, database, "Consulta e registra informações", "SQL")
+
+@enduml
