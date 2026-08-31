@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cálculo de Custos</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>🐄 Cálculo de Custos</h1>
+    <p>Vaca Parida e Cria</p>
+</header>
+
+<main>
+
+    <h2>Registrar custos</h2>
+
+    <form method="POST">
+
+        <label>
+            Manejo sanitário:
+        </label>
+
+        <input
+            type="number"
+            name="manejo_sanitario"
+            step="0.01"
+            min="0"
+            required
+        >
+
+        <label>
+            Suplementação mineral:
+        </label>
+
+        <input
+            type="number"
+            name="suplementacao"
+            step="0.01"
+            min="0"
+            required
+        >
+
+        <label>
+            Medicamentos:
+        </label>
+
+        <input
+            type="number"
+            name="medicamentos"
+            step="0.01"
+            min="0"
+            required
+        >
+
+        <label>
+            Alimentação:
+        </label>
+
+        <input
+            type="number"
+            name="alimentacao"
+            step="0.01"
+            min="0"
+            required
+        >
+
+        <button type="submit">
+            Calcular custo
+        </button>
+
+    </form>
+
+    {% if resultado %}
+
+    <section>
+
+        <h2>Resultado</h2>
+
+        <p>
+            Manejo sanitário:
+            R$ {{ "%.2f"|format(resultado.manejo_sanitario) }}
+        </p>
+
+        <p>
+            Suplementação:
+            R$ {{ "%.2f"|format(resultado.suplementacao) }}
+        </p>
+
+        <p>
+            Medicamentos:
+            R$ {{ "%.2f"|format(resultado.medicamentos) }}
+        </p>
+
+        <p>
+            Alimentação:
+            R$ {{ "%.2f"|format(resultado.alimentacao) }}
+        </p>
+
+        <h3>
+            Custo total:
+            R$ {{ "%.2f"|format(resultado.custo_total) }}
+        </h3>
+
+    </section>
+
+    {% endif %}
+
+    <a href="/">Voltar</a>
+
+</main>
+
+</body>
+</html>
