@@ -73,3 +73,10 @@ a {
     text-decoration: none;
     color: #2f6b3f;
 }
+
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+}
