@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Vaca Parida{% endblock %} | Gestão Rural</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <a class="brand" href="{{ url_for('index') }}">
+            <span class="brand-icon">🐄</span>
+            <span>
+                <strong>Vaca Parida</strong>
+                <small>Gestão Rural</small>
+            </span>
+        </a>
+
+        <nav class="nav">
+            <a class="{{ 'active' if request.endpoint == 'index' else '' }}" href="{{ url_for('index') }}">
+                <span>⌂</span> Dashboard
+            </a>
+            <a class="{{ 'active' if request.endpoint in ['rebanho','novo_animal','editar_animal'] else '' }}" href="{{ url_for('rebanho') }}">
+                <span>🐄</span> Rebanho
+            </a>
+            <a class="{{ 'active' if request.endpoint == 'custos' else '' }}" href="{{ url_for('custos') }}">
+                <span>💰</span> Custos
+            </a>
+            <a class="{{ 'active' if request.endpoint == 'relatorios' else '' }}" href="{{ url_for('relatorios') }}">
+                <span>📊</span> Relatórios
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="mini-card">
+                <span>Rebanho cadastrado</span>
+                <strong>{{ stats.animais }}</strong>
+            </div>
+            <small>Controle simples dos animais e custos da propriedade.</small>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">SISTEMA DE CONTROLE</p>
+                <h1>{% block page_title %}Visão geral{% endblock %}</h1>
+            </div>
+            <a class="btn btn-primary" href="{{ url_for('novo_animal') }}">+ Novo animal</a>
+        </header>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alerts">
+                    {% for category, message in messages %}
+                        <div class="alert {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+</div>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

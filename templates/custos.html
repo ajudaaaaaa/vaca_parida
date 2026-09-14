@@ -1,120 +1,58 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
+{% block title %}Custos{% endblock %}
+{% block page_title %}Controle de custos{% endblock %}
 
-    <title>Cálculo de Custos</title>
+{% block content %}
+<div class="page-intro">
+    <p>Registre as despesas da matriz e da cria e acompanhe o total investido.</p>
+</div>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
-</head>
-
-<body>
-
-<header>
-    <h1>🐄 Cálculo de Custos</h1>
-    <p>Vaca Parida e Cria</p>
-</header>
-
-<main>
-
-    <h2>Registrar custos</h2>
-
-    <form method="POST">
-
-        <label>
-            Manejo sanitário:
+<section class="panel">
+    <div class="panel-head"><div><span class="eyebrow">NOVO LANÇAMENTO</span><h3>Registrar custos</h3></div></div>
+    <form method="post" class="form-grid">
+        <label>Animal relacionado
+            <select name="animal_id">
+                <option value="">Custo geral da propriedade</option>
+                {% for animal in animais %}<option value="{{ animal.id }}">Brinco {{ animal.brinco }} · {{ animal.tipo }}</option>{% endfor %}
+            </select>
         </label>
-
-        <input
-            type="number"
-            name="manejo_sanitario"
-            step="0.01"
-            min="0"
-            required
-        >
-
-        <label>
-            Suplementação mineral:
-        </label>
-
-        <input
-            type="number"
-            name="suplementacao"
-            step="0.01"
-            min="0"
-            required
-        >
-
-        <label>
-            Medicamentos:
-        </label>
-
-        <input
-            type="number"
-            name="medicamentos"
-            step="0.01"
-            min="0"
-            required
-        >
-
-        <label>
-            Alimentação:
-        </label>
-
-        <input
-            type="number"
-            name="alimentacao"
-            step="0.01"
-            min="0"
-            required
-        >
-
-        <button type="submit">
-            Calcular custo
-        </button>
-
+        <label>Data<input type="date" name="data"></label>
+        <label>Manejo sanitário (R$)<input type="number" step="0.01" min="0" name="manejo_sanitario" placeholder="0,00"></label>
+        <label>Suplementação mineral (R$)<input type="number" step="0.01" min="0" name="suplementacao" placeholder="0,00"></label>
+        <label>Medicamentos (R$)<input type="number" step="0.01" min="0" name="medicamentos" placeholder="0,00"></label>
+        <label>Alimentação (R$)<input type="number" step="0.01" min="0" name="alimentacao" placeholder="0,00"></label>
+        <div class="form-actions full"><button class="btn btn-primary" type="submit">+ Registrar custos</button></div>
     </form>
+</section>
 
-    {% if resultado %}
-
-    <section>
-
-        <h2>Resultado</h2>
-
-        <p>
-            Manejo sanitário:
-            R$ {{ "%.2f"|format(resultado.manejo_sanitario) }}
-        </p>
-
-        <p>
-            Suplementação:
-            R$ {{ "%.2f"|format(resultado.suplementacao) }}
-        </p>
-
-        <p>
-            Medicamentos:
-            R$ {{ "%.2f"|format(resultado.medicamentos) }}
-        </p>
-
-        <p>
-            Alimentação:
-            R$ {{ "%.2f"|format(resultado.alimentacao) }}
-        </p>
-
-        <h3>
-            Custo total:
-            R$ {{ "%.2f"|format(resultado.custo_total) }}
-        </h3>
-
-    </section>
-
+<section class="panel">
+    <div class="panel-head">
+        <div><span class="eyebrow">HISTÓRICO</span><h3>Lançamentos registrados</h3></div>
+        <strong class="total-highlight">R$ {{ "%.2f"|format(total) }}</strong>
+    </div>
+    {% if registros %}
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Categoria</th><th>Animal</th><th>Data</th><th>Valor</th><th>Ação</th></tr></thead>
+            <tbody>
+            {% for item in registros %}
+            <tr>
+                <td><strong>{{ item.categoria }}</strong></td>
+                <td>{{ "Brinco " ~ item.brinco if item.brinco else "Geral" }}</td>
+                <td>{{ item.data or "—" }}</td>
+                <td class="money">R$ {{ "%.2f"|format(item.valor) }}</td>
+                <td>
+                    <form method="post" action="{{ url_for('excluir_custo', id=item.id) }}" onsubmit="return confirm('Excluir este lançamento?')">
+                        <button class="btn btn-small btn-danger" type="submit">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="empty">Nenhum custo registrado.</div>
     {% endif %}
-
-    <a href="/">Voltar</a>
-
-</main>
-
-</body>
-</html>
+</section>
+{% endblock %}

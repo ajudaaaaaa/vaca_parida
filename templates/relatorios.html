@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Relatórios{% endblock %}
+{% block page_title %}Relatórios{% endblock %}
+
+{% block content %}
+<div class="page-intro"><p>Visualize como os custos estão distribuídos no sistema.</p></div>
+
+<div class="two-columns">
+    <section class="panel">
+        <div class="panel-head"><div><span class="eyebrow">POR CATEGORIA</span><h3>Distribuição dos custos</h3></div></div>
+        {% if por_categoria %}
+        <div class="report-list">
+            {% for item in por_categoria %}
+            <div class="report-row">
+                <div><strong>{{ item.categoria }}</strong><span>Participação no total</span></div>
+                <strong class="money">R$ {{ "%.2f"|format(item.total) }}</strong>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}<div class="empty">Ainda não há dados para o relatório.</div>{% endif %}
+    </section>
+
+    <section class="panel">
+        <div class="panel-head"><div><span class="eyebrow">POR ANIMAL</span><h3>Custo acumulado</h3></div></div>
+        {% if por_animal %}
+        <div class="report-list">
+            {% for item in por_animal %}
+            <div class="report-row">
+                <div><strong>Brinco {{ item.brinco }}</strong><span>{{ item.tipo }}</span></div>
+                <strong class="money">R$ {{ "%.2f"|format(item.total) }}</strong>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}<div class="empty">Cadastre animais e custos para gerar o relatório.</div>{% endif %}
+    </section>
+</div>
+
+<section class="info-banner">
+    <div class="info-icon">📊</div>
+    <div><strong>Próximo passo</strong><p>Com os lançamentos registrados, estes relatórios ajudam a identificar os principais componentes do custo de produção.</p></div>
+</section>
+{% endblock %}

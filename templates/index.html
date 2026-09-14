@@ -1,21 +1,84 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vaca Parida - Controle Agrícola</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <header>
-        <h1>🐄 Vaca Parida</h1>
-        <p>Sistema de Controle de Custo de Produção e Rebanho</p>
-    </header>
-    <main>
-        <h2>Menu Principal</h2>
-        <p>Selecione a opção desejada para gerenciar a propriedade:</p>
-        <a href="/rebanho">Cadastrar Matriz e Cria</a>
-        <a href="/custos">Consultar Custos de Produção</a>
-    </main>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <span class="hero-kicker">GESTÃO DO REBANHO</span>
+        <h2>Controle sua produção com mais clareza.</h2>
+        <p>Cadastre animais, registre despesas e acompanhe o custo de produção da sua propriedade.</p>
+        <div class="hero-actions">
+            <a class="btn btn-light" href="{{ url_for('novo_animal') }}">Cadastrar animal</a>
+            <a class="btn btn-ghost-light" href="{{ url_for('custos') }}">Registrar custos</a>
+        </div>
+    </div>
+    <div class="cow-art">🐄</div>
+</section>
+
+<section class="stats-grid">
+    <div class="stat-card">
+        <span class="stat-icon">🐄</span>
+        <div><small>Total de animais</small><strong>{{ stats.animais }}</strong></div>
+    </div>
+    <div class="stat-card">
+        <span class="stat-icon">♀</span>
+        <div><small>Matrizes</small><strong>{{ stats.matrizes }}</strong></div>
+    </div>
+    <div class="stat-card">
+        <span class="stat-icon">🐮</span>
+        <div><small>Bezerros</small><strong>{{ stats.bezerros }}</strong></div>
+    </div>
+    <div class="stat-card">
+        <span class="stat-icon">R$</span>
+        <div><small>Custos registrados</small><strong>R$ {{ "%.2f"|format(stats.total) }}</strong></div>
+    </div>
+</section>
+
+<div class="two-columns">
+    <section class="panel">
+        <div class="panel-head">
+            <div><span class="eyebrow">REBANHO</span><h3>Animais recentes</h3></div>
+            <a class="text-link" href="{{ url_for('rebanho') }}">Ver todos →</a>
+        </div>
+        {% if recentes %}
+        <div class="animal-list">
+            {% for animal in recentes %}
+            <div class="animal-row">
+                <div class="avatar">🐄</div>
+                <div class="animal-info">
+                    <strong>Brinco {{ animal.brinco }}</strong>
+                    <span>{{ animal.tipo }}{% if animal.raca %} · {{ animal.raca }}{% endif %}</span>
+                </div>
+                <span class="badge">{{ animal.tipo }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <div class="empty">Nenhum animal cadastrado ainda.</div>
+        {% endif %}
+    </section>
+
+    <section class="panel">
+        <div class="panel-head">
+            <div><span class="eyebrow">MOVIMENTAÇÕES</span><h3>Últimos custos</h3></div>
+            <a class="text-link" href="{{ url_for('custos') }}">Ver todos →</a>
+        </div>
+        {% if custos_recentes %}
+        <div class="cost-list">
+            {% for item in custos_recentes %}
+            <div class="cost-row">
+                <div>
+                    <strong>{{ item.categoria }}</strong>
+                    <span>{% if item.brinco %}Brinco {{ item.brinco }}{% else %}Geral{% endif %}</span>
+                </div>
+                <strong class="money">R$ {{ "%.2f"|format(item.valor) }}</strong>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <div class="empty">Nenhum custo registrado ainda.</div>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}
