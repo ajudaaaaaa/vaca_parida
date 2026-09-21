@@ -30,17 +30,26 @@ def init_db():
         )
     """)
 
-    conn.execute("""
+      conn.execute("""
         CREATE TABLE IF NOT EXISTS custos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             descricao TEXT NOT NULL,
             categoria TEXT NOT NULL,
             data TEXT,
             valor REAL NOT NULL,
+            quantidade REAL DEFAULT 0,
             animal_id INTEGER,
             FOREIGN KEY(animal_id) REFERENCES animais(id)
         )
     """)
+
+    colunas = conn.execute("PRAGMA table_info(custos)").fetchall()
+    nomes_colunas = [coluna["name"] for coluna in colunas]
+
+    if "quantidade" not in nomes_colunas:
+        conn.execute(
+            "ALTER TABLE custos ADD COLUMN quantidade REAL DEFAULT 0"
+        )
 
     conn.commit()
     conn.close()
@@ -216,18 +225,30 @@ def custos():
             conn = get_db()
             adicionados = 0
 
+                       quantidade_suplementacao = float(
+                request.form.get("quantidade_suplementacao") or 0
+            )
+
             for categoria, campo in categorias:
                 valor = float(request.form.get(campo) or 0)
+
                 if valor > 0:
+                    quantidade = (
+                        quantidade_suplementacao
+                        if campo == "suplementacao"
+                        else 0
+                    )
+
                     conn.execute("""
                         INSERT INTO custos
-                        (descricao, categoria, data, valor, animal_id)
-                        VALUES (?, ?, ?, ?, ?)
+                        (descricao, categoria, data, valor, quantidade, animal_id)
+                        VALUES (?, ?, ?, ?, ?, ?)
                     """, (
                         categoria,
                         categoria,
                         data,
                         valor,
+                        quantidade,
                         animal_id
                     ))
                     adicionados += 1
@@ -310,6 +331,7 @@ def relatorios():
     )
 
 
+init_db()
+
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True)
