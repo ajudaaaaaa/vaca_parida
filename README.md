@@ -1,170 +1,233 @@
 # Sistema de Controle de Custo de Produção de Vaca Parida e Cria
 
-## Descrição
+🌐 **Aplicação Web Online:**
+[COLOCAR AQUI O LINK DO PYTHONANYWHERE]
 
-Este projeto consiste no desenvolvimento de um sistema para auxiliar produtores rurais no controle dos custos de produção de vacas paridas e suas crias até o desmame.
+---
 
-O sistema permite registrar despesas relacionadas ao manejo sanitário, suplementação mineral e demais custos da matriz, calculando automaticamente o custo acumulado por bezerro produzido. O objetivo é facilitar o controle financeiro da propriedade e apoiar a tomada de decisões.
+## Sobre o Projeto
+
+Este projeto consiste no desenvolvimento de um sistema web para auxiliar produtores rurais no controle dos custos de produção de vacas paridas e suas crias até o desmame.
+
+A aplicação permite registrar informações relacionadas às matrizes, bezerros, despesas de manejo e suplementação, além de realizar o controle e cálculo dos custos de produção.
+
+O sistema foi desenvolvido com o objetivo de facilitar o acompanhamento financeiro da propriedade rural e auxiliar na tomada de decisões relacionadas à produção.
 
 ---
 
 ## Objetivo
 
-Desenvolver uma aplicação que possibilite:
+Desenvolver uma aplicação web que possibilite:
 
-- Cadastro de vacas (matrizes);
-- Cadastro de bezerros;
-- Registro de despesas de manejo;
-- Registro de suplementação mineral;
-- Cálculo automático do custo de produção por bezerro;
-- Consulta de relatórios de custos.
+* Cadastrar vacas (matrizes);
+* Cadastrar bezerros;
+* Associar o bezerro à sua matriz;
+* Registrar despesas de manejo;
+* Registrar despesas sanitárias;
+* Registrar suplementação mineral;
+* Registrar medicamentos;
+* Atualizar registros;
+* Excluir registros;
+* Calcular o custo de produção;
+* Consultar os custos relacionados às vacas e aos bezerros;
+* Visualizar informações e históricos dos custos.
 
 ---
 
 ## Público-alvo
 
-- Pequenos produtores rurais;
-- Administradores de fazendas;
-- Técnicos agropecuários.
+O sistema foi desenvolvido principalmente para:
+
+* Pequenos produtores rurais;
+* Administradores de fazendas;
+* Técnicos agropecuários.
 
 ---
 
-## Funcionalidades
+# Funcionalidades
 
-### Cadastro
+## Cadastro
 
-- Cadastrar vacas;
-- Cadastrar bezerros;
-- Associar o bezerro à sua matriz.
+* Cadastro de vacas (matrizes);
+* Cadastro de bezerros;
+* Associação do bezerro à sua matriz.
 
-### Controle de Custos
+## Controle de Custos
 
-- Registrar despesas sanitárias;
-- Registrar suplementação mineral;
-- Registrar medicamentos;
-- Atualizar ou excluir despesas cadastradas.
+* Registro de despesas sanitárias;
+* Registro de suplementação mineral;
+* Registro de medicamentos;
+* Registro de outras despesas relacionadas ao manejo;
+* Atualização de registros;
+* Exclusão de registros.
 
-### Consultas
+## Consultas
 
-- Consultar custos por vaca;
-- Consultar custos por bezerro;
-- Consultar despesas por período;
-- Visualizar histórico de manejos.
+* Consulta de custos por vaca;
+* Consulta de custos por bezerro;
+* Consulta de despesas;
+* Visualização do histórico de manejos.
 
-### Relatórios
+## Cálculos
 
-- Relatório de custo individual por vaca;
-- Relatório de custo por bezerro;
-- Relatório geral de custos da propriedade.
+O sistema realiza o processamento dos dados cadastrados para auxiliar no acompanhamento do custo acumulado da produção da vaca parida e de sua cria.
 
 ---
 
-## Histórias de Usuário
+# Histórias de Usuário
 
-### Francisco Silva (Produtor Rural)
+### Francisco Silva — Produtor Rural
 
 > Como produtor rural, quero registrar as despesas da vaca parida e sua cria para acompanhar o custo de produção de cada bezerro.
 
-### Orlando Oliveira (Administrador)
+### Orlando Oliveira — Administrador
 
-> Como administrador da fazenda, quero consultar relatórios de custos para analisar a rentabilidade das matrizes.
+> Como administrador da fazenda, quero consultar relatórios de custos para analisar os gastos relacionados às matrizes e suas crias.
 
-### Felipe Santos (Técnico Agropecuário)
+### Felipe Santos — Técnico Agropecuário
 
-> Como técnico agropecuário, quero registrar os manejos sanitários realizados para manter o histórico atualizado e calcular corretamente os custos.
+> Como técnico agropecuário, quero registrar os manejos sanitários realizados para manter o histórico atualizado e contribuir para o controle correto dos custos.
 
 ---
 
-## Tecnologias sugeridas
+# Tecnologias Utilizadas
 
-- Java
-- MySQL
-- JDBC
-- Swing ou JavaFX
-- Git
-- GitHub
+O projeto foi desenvolvido utilizando:
+
+* **Python**
+* **Flask**
+* **HTML**
+* **CSS**
+* **Git**
+* **GitHub**
+* **PlantUML**
+* **PythonAnywhere**
+
+O Git e o GitHub foram utilizados para controle de versão e organização do desenvolvimento do projeto.
+
+O PlantUML foi utilizado para a criação dos diagramas da arquitetura.
+
+O PythonAnywhere foi utilizado para disponibilizar a aplicação web publicamente.
+
+---
+
+# Metodologia
+
+Durante o desenvolvimento foram utilizadas práticas de engenharia de software para organizar as etapas do projeto.
+
+O desenvolvimento foi estruturado a partir de **Histórias de Usuário**, permitindo identificar as necessidades dos diferentes usuários do sistema.
+
+O código foi versionado utilizando **Git e GitHub**, com organização das tarefas por meio do **GitHub Projects**.
+
+A arquitetura do sistema foi documentada utilizando diagramas desenvolvidos em **PlantUML**.
+
+Após o desenvolvimento, a aplicação foi disponibilizada na nuvem por meio do **PythonAnywhere**.
 
 ---
 
 # Arquitetura do Sistema
 
-A arquitetura do sistema foi planejada antes do início do desenvolvimento, com o objetivo de representar a estrutura técnica, os dados e os principais componentes envolvidos no funcionamento da aplicação.
+A arquitetura do sistema foi planejada e documentada utilizando a linguagem **PlantUML**, permitindo representar os principais elementos envolvidos no funcionamento da aplicação.
 
-Os diagramas foram desenvolvidos utilizando a linguagem **PlantUML** e estão disponíveis na raiz deste repositório em formato `.puml`.
+## Diagrama de Contexto — C4 Nível 1
 
-## Diagrama Entidade-Relacionamento (DER)
-
-O Diagrama Entidade-Relacionamento representa a estrutura dos dados que serão utilizados pelo sistema.
-
-O modelo contempla informações relacionadas às vacas, bezerros, despesas, insumos e consumo de insumos, permitindo organizar os dados necessários para o controle dos custos de produção.
-
-### Diagrama
-
-![Diagrama Entidade-Relacionamento](diagrama_banco.png)
-
-**Arquivo PlantUML:** [diagrama_banco.puml](diagrama_banco.puml)
-
-## Diagrama de Contexto (C4 - Nível 1)
-
-Este diagrama representa a visão geral do sistema, mostrando o produtor rural como usuário principal e sua interação com o Sistema de Controle de Custo de Produção de Vaca Parida e Cria.
-
-### Diagrama
+O Diagrama de Contexto representa uma visão geral do sistema e sua interação com o usuário principal.
 
 ![Diagrama de Contexto](contexto.png)
 
-**Arquivo PlantUML:** `contexto.puml`
----
-
-
-# Arquitetura do Sistema
-
-A arquitetura do sistema foi modelada utilizando **PlantUML**, permitindo documentar a estrutura técnica, o banco de dados e o fluxo do processo de cálculo do custo de produção da vaca parida e sua cria.
-
-## Diagramas desenvolvidos
-
-### Diagrama de Contexto (C4 Nível 1)
-
-Representa a interação entre o produtor rural e o sistema.
-
-![Diagrama de Contexto](diagram.png)
-
 Arquivo PlantUML: `contexto.puml`
 
-### Diagrama de Banco de Dados (DER)
+---
 
-Representa as entidades do sistema, incluindo vacas, bezerros, despesas e insumos.
+## Diagrama de Contêiner — C4 Nível 2
+
+O Diagrama de Contêiner apresenta os principais componentes da aplicação e a forma como eles se relacionam para realizar o funcionamento do sistema.
+
+![Diagrama C4 - Nível 2](c4_container.png)
+
+Arquivo PlantUML: `c4_container.puml`
+
+> **IMPORTANTE:** substituir `c4_container.png` pelo nome real do arquivo do diagrama C4 Nível 2 de vocês, caso ele tenha outro nome.
+
+---
+
+## Diagrama de Banco de Dados — DER
+
+O Diagrama Entidade-Relacionamento representa a estrutura dos dados utilizados pelo sistema, incluindo informações relacionadas às vacas, bezerros, despesas e insumos.
 
 ![Diagrama de Banco de Dados](diagrama_banco.png)
 
 Arquivo PlantUML: `diagrama_banco.puml`
 
-### Fluxograma do Processo do Agro
+---
 
-Representa o processo de cálculo do custo acumulado por bezerro produzido.
+## Fluxograma do Processo do Agro
+
+O fluxograma representa o processo utilizado para o controle e cálculo dos custos relacionados à produção da vaca parida e sua cria.
 
 ![Fluxograma do Processo do Agro](fluxo_calculo.png)
 
 Arquivo PlantUML: `fluxo_calculo.puml`
 
-## Responsáveis pelos diagramas
+---
 
-* **Diagrama de Contexto (C4 Nível 1):** [Nome do integrante]
-* **Diagrama de Banco de Dados (DER):** Pedro Manoel Rebelo Seti
-* **Fluxograma do Processo do Agro:** [Nome do integrante]
+# Desenvolvedores
 
-## Desenvolvedores
+* **Emanuelle Cassol de Souza Godinho**
+* **Luana Lopes Reis**
+* **Pedro Manoel Rebelo Seti**
 
-Emanuelle Cassol de Souza Godinho
-Luana Lopes Reis
-Pedro Manoel Rebelo Seti
+---
 
-## Estrutura do Projeto
+# Estrutura do Projeto
 
 ```text
-src/
+projeto/
 │
-├── model/
-├── dao/
-├── controller/
-├── view/
-└── util/
+├── app.py
+├── templates/
+├── static/
+├── docs/
+│   ├── banner_snct.pdf
+│   ├── banner_snct.png
+│   └── c4_container.png
+│
+├── contexto.puml
+├── diagrama_banco.puml
+├── fluxo_calculo.puml
+│
+├── requirements.txt
+└── README.md
+```
+
+> A estrutura acima deve ser ajustada caso os nomes dos arquivos e pastas do projeto sejam diferentes.
+
+---
+
+# Aplicação Online
+
+A aplicação está hospedada no **PythonAnywhere** e pode ser acessada pelo link:
+
+**[COLOCAR AQUI O LINK DO PYTHONANYWHERE]**
+
+O sistema disponibiliza as principais funcionalidades de cadastro, consulta, atualização, exclusão e processamento dos dados relacionados ao controle de custos da produção.
+
+---
+
+# Documentação
+
+Os arquivos relacionados à documentação e apresentação do projeto estão disponíveis na pasta `docs/`.
+
+Entre os materiais estão:
+
+* Banner científico/acadêmico;
+* Diagrama C4;
+* Imagens utilizadas na documentação.
+
+---
+
+# Equipe
+
+**Emanuelle Cassol de Souza Godinho**
+**Luana Lopes Reis**
+**Pedro Manoel Rebelo Seti**
