@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Custos{% endblock %}
+{% block page_title %}Controle de custos{% endblock %}
+
+{% block content %}
+<div class="page-intro">
+    <p>Registre as despesas da matriz e da cria e acompanhe o total investido.</p>
+</div>
+
+<section class="panel">
+    <div class="panel-head"><div><span class="eyebrow">NOVO LANÇAMENTO</span><h3>Registrar custos</h3></div></div>
+    <form method="post" class="form-grid">
+        <label>Animal relacionado
+            <select name="animal_id">
+                <option value="">Custo geral da propriedade</option>
+                {% for animal in animais %}<option value="{{ animal.id }}">Brinco {{ animal.brinco }} · {{ animal.tipo }}</option>{% endfor %}
+            </select>
+        </label>
+        <label>Data<input type="date" name="data"></label>
+        <label>Manejo sanitário (R$)<input type="number" step="0.01" min="0" name="manejo_sanitario" placeholder="0,00"></label>
+        <label>Suplementação mineral (R$)<input type="number" step="0.01" min="0" name="suplementacao" placeholder="0,00"></label>
+        <label>Medicamentos (R$)<input type="number" step="0.01" min="0" name="medicamentos" placeholder="0,00"></label>
+        <label>Alimentação (R$)<input type="number" step="0.01" min="0" name="alimentacao" placeholder="0,00"></label>
+        <div class="form-actions full"><button class="btn btn-primary" type="submit">+ Registrar custos</button></div>
+    </form>
+</section>
+
+<section class="panel">
+    <div class="panel-head">
+        <div><span class="eyebrow">HISTÓRICO</span><h3>Lançamentos registrados</h3></div>
+        <strong class="total-highlight">R$ {{ "%.2f"|format(total) }}</strong>
+    </div>
+    {% if registros %}
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Categoria</th><th>Animal</th><th>Data</th><th>Valor</th><th>Ação</th></tr></thead>
+            <tbody>
+            {% for item in registros %}
+            <tr>
+                <td><strong>{{ item.categoria }}</strong></td>
+                <td>{{ "Brinco " ~ item.brinco if item.brinco else "Geral" }}</td>
+                <td>{{ item.data or "—" }}</td>
+                <td class="money">R$ {{ "%.2f"|format(item.valor) }}</td>
+                <td>
+                    <form method="post" action="{{ url_for('excluir_custo', id=item.id) }}" onsubmit="return confirm('Excluir este lançamento?')">
+                        <button class="btn btn-small btn-danger" type="submit">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="empty">Nenhum custo registrado.</div>
+    {% endif %}
+</section>
+{% endblock %}

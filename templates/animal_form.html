@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{{ "Editar animal" if animal else "Novo animal" }}{% endblock %}
+{% block page_title %}{{ "Editar animal" if animal else "Novo animal" }}{% endblock %}
+
+{% block content %}
+<div class="form-layout">
+    <section class="panel form-panel">
+        <div class="panel-head">
+            <div><span class="eyebrow">CADASTRO DO REBANHO</span><h3>{{ "Atualize os dados" if animal else "Cadastre um novo animal" }}</h3></div>
+        </div>
+        <form method="post" class="form-grid">
+            <label>Brinco *<input name="brinco" required value="{{ animal.brinco if animal else '' }}" placeholder="Ex.: 102"></label>
+            <label>Tipo *
+                <select name="tipo" required>
+                    {% for tipo in ["Matriz","Bezerro","Touro","Novilha","Outro"] %}
+                    <option value="{{ tipo }}" {% if animal and animal.tipo == tipo %}selected{% endif %}>{{ tipo }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>Raça<input name="raca" value="{{ animal.raca if animal else '' }}" placeholder="Ex.: Nelore"></label>
+            <label>Sexo
+                <select name="sexo">
+                    <option value="">Não informado</option>
+                    <option value="Fêmea" {% if animal and animal.sexo == "Fêmea" %}selected{% endif %}>Fêmea</option>
+                    <option value="Macho" {% if animal and animal.sexo == "Macho" %}selected{% endif %}>Macho</option>
+                </select>
+            </label>
+            <label>Data de nascimento<input type="date" name="nascimento" value="{{ animal.nascimento if animal else '' }}"></label>
+            <label>Peso atual (kg)<input type="number" step="0.1" min="0" name="peso" value="{{ animal.peso if animal else '0' }}"></label>
+            <label class="full">Observações<textarea name="observacoes" rows="5" placeholder="Informações importantes sobre o animal...">{{ animal.observacoes if animal else '' }}</textarea></label>
+            <div class="form-actions full">
+                <a class="btn" href="{{ url_for('rebanho') }}">Cancelar</a>
+                <button class="btn btn-primary" type="submit">{{ "Salvar alterações" if animal else "Cadastrar animal" }}</button>
+            </div>
+        </form>
+    </section>
+
+    <aside class="tip-card">
+        <span class="tip-icon">💡</span>
+        <h3>Boa prática</h3>
+        <p>Use o número do brinco como identificação principal. Assim fica mais fácil relacionar o animal aos custos e aos relatórios.</p>
+    </aside>
+</div>
+{% endblock %}

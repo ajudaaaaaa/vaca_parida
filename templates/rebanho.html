@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Rebanho{% endblock %}
+{% block page_title %}Rebanho{% endblock %}
+
+{% block content %}
+<div class="page-intro">
+    <div><p>Cadastre e gerencie os animais da propriedade.</p></div>
+    <a class="btn btn-primary" href="{{ url_for('novo_animal') }}">+ Cadastrar animal</a>
+</div>
+
+<section class="panel">
+    <div class="toolbar">
+        <div class="search"><span>⌕</span><input id="animalSearch" type="search" placeholder="Pesquisar por brinco, tipo ou raça..."></div>
+        <span class="result-count">{{ animais|length }} registro(s)</span>
+    </div>
+
+    {% if animais %}
+    <div class="table-wrap">
+        <table id="animalTable">
+            <thead>
+                <tr><th>Brinco</th><th>Tipo</th><th>Raça</th><th>Sexo</th><th>Nascimento</th><th>Peso</th><th>Ações</th></tr>
+            </thead>
+            <tbody>
+            {% for animal in animais %}
+                <tr>
+                    <td><strong>{{ animal.brinco }}</strong></td>
+                    <td><span class="badge">{{ animal.tipo }}</span></td>
+                    <td>{{ animal.raca or "—" }}</td>
+                    <td>{{ animal.sexo or "—" }}</td>
+                    <td>{{ animal.nascimento or "—" }}</td>
+                    <td>{{ "%.1f"|format(animal.peso or 0) }} kg</td>
+                    <td class="actions">
+                        <a class="btn btn-small" href="{{ url_for('editar_animal', id=animal.id) }}">Editar</a>
+                        <form method="post" action="{{ url_for('excluir_animal', id=animal.id) }}" onsubmit="return confirm('Excluir este animal?')">
+                            <button class="btn btn-small btn-danger" type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <div class="empty large">Seu rebanho ainda está vazio.<br><a href="{{ url_for('novo_animal') }}">Cadastre o primeiro animal.</a></div>
+    {% endif %}
+</section>
+{% endblock %}
