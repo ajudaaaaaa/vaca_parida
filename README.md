@@ -1,18 +1,17 @@
 # Sistema de Controle de Custo de Produção de Vaca Parida e Cria
 
-🌐 **Aplicação Web Online:**
-
+🌐 **Aplicação Web Online:**  
 https://pedromanoel.pythonanywhere.com/re
 
 ---
 
 ## Sobre o Projeto
 
-Este projeto consiste no desenvolvimento de um sistema web para auxiliar no controle dos custos relacionados à produção de vacas paridas e suas crias.
+Este projeto consiste no desenvolvimento de um sistema web para auxiliar produtores rurais no controle dos custos de produção de vacas paridas e suas crias até o desmame.
 
-A aplicação permite cadastrar animais, registrar custos relacionados ao manejo, suplementação mineral, medicamentos e alimentação, além de consultar os registros e relatórios de custos.
+A aplicação permite registrar informações relacionadas aos animais, despesas de manejo, suplementação mineral, medicamentos e alimentação, além de consultar os registros e relatórios de custos.
 
-O sistema foi desenvolvido com o objetivo de facilitar o acompanhamento dos gastos da propriedade rural e organizar as informações utilizadas no processo de produção.
+O sistema foi desenvolvido com o objetivo de facilitar o acompanhamento dos gastos da propriedade rural e organizar as informações relacionadas à produção.
 
 ---
 
@@ -20,13 +19,13 @@ O sistema foi desenvolvido com o objetivo de facilitar o acompanhamento dos gast
 
 Desenvolver uma aplicação web que possibilite:
 
-- Cadastrar matrizes e bezerros;
+- Cadastrar vacas (matrizes);
+- Cadastrar bezerros;
 - Registrar informações dos animais;
 - Registrar despesas de manejo sanitário;
-- Registrar despesas de suplementação mineral;
-- Informar a quantidade utilizada na suplementação mineral;
-- Registrar despesas com medicamentos;
-- Registrar despesas com alimentação;
+- Registrar suplementação mineral;
+- Registrar medicamentos;
+- Registrar alimentação;
 - Associar custos aos animais;
 - Atualizar registros;
 - Excluir registros;
@@ -54,7 +53,7 @@ O sistema foi desenvolvido principalmente para:
 - Registro de brinco;
 - Registro de raça;
 - Registro de sexo;
-- Registro de data de nascimento;
+- Registro de nascimento;
 - Registro de peso;
 - Registro de observações;
 - Edição de animais;
@@ -66,20 +65,36 @@ O sistema permite registrar:
 
 - Manejo sanitário;
 - Suplementação mineral;
-- Quantidade utilizada na suplementação mineral;
 - Medicamentos;
 - Alimentação.
 
 Os custos podem ser associados a um animal específico ou registrados como custo geral da propriedade.
 
-## Relatórios
+## Consultas e Relatórios
 
 O sistema permite consultar:
 
 - Custos por categoria;
 - Custos relacionados aos animais;
 - Histórico dos lançamentos;
-- Total dos custos registrados.
+- Total dos custos registrados;
+- Relatórios de custos por animal.
+
+---
+
+# Histórias de Usuário
+
+### Francisco Silva — Produtor Rural
+
+> Como produtor rural, quero registrar as despesas da vaca parida e sua cria para acompanhar o custo de produção de cada bezerro.
+
+### Orlando Oliveira — Administrador
+
+> Como administrador da fazenda, quero consultar relatórios de custos para analisar os gastos relacionados às matrizes e suas crias.
+
+### Felipe Santos — Técnico Agropecuário
+
+> Como técnico agropecuário, quero registrar os manejos sanitários realizados para manter o histórico atualizado e contribuir para o controle correto dos custos.
 
 ---
 
@@ -97,35 +112,37 @@ O projeto foi desenvolvido utilizando:
 - **PlantUML**
 - **PythonAnywhere**
 
-O **Flask** foi utilizado para o desenvolvimento da aplicação web.
+O Flask foi utilizado para o desenvolvimento da aplicação web.
 
-O **SQLite** foi utilizado para armazenamento dos dados.
+O SQLite foi utilizado para armazenamento dos dados.
 
-O **Git e GitHub** foram utilizados para controle de versão e organização do projeto.
+O Git e o GitHub foram utilizados para controle de versão e organização do projeto.
 
-O **PlantUML** foi utilizado para a criação dos diagramas da arquitetura.
+O PlantUML foi utilizado para criação dos diagramas da arquitetura.
 
-O **PythonAnywhere** foi utilizado para disponibilizar a aplicação web publicamente.
+O PythonAnywhere foi utilizado para disponibilizar a aplicação web publicamente.
 
 ---
 
 # Metodologia
 
-O desenvolvimento foi organizado a partir de histórias de usuário, permitindo identificar as necessidades dos usuários do sistema.
+O desenvolvimento foi organizado a partir de Histórias de Usuário, permitindo identificar as necessidades dos diferentes usuários do sistema.
 
-As tarefas foram organizadas utilizando o **GitHub Projects**, e o código foi versionado utilizando **Git e GitHub**.
+As tarefas foram organizadas utilizando o **GitHub Projects**, enquanto o código foi versionado utilizando **Git e GitHub**.
 
-A arquitetura e os processos do sistema foram documentados utilizando diagramas desenvolvidos em **PlantUML**.
+A arquitetura do sistema foi documentada utilizando diagramas desenvolvidos em **PlantUML**.
 
-Após o desenvolvimento e os testes, a aplicação foi disponibilizada na plataforma **PythonAnywhere**.
+Após o desenvolvimento, a aplicação foi disponibilizada na nuvem por meio do **PythonAnywhere**.
 
 ---
 
 # Arquitetura do Sistema
 
-A arquitetura do sistema foi documentada utilizando diagramas em PlantUML.
+A arquitetura do sistema foi documentada utilizando diagramas desenvolvidos em PlantUML.
 
-## Diagrama de Contexto
+## Diagrama de Contexto — C4 Nível 1
+
+O Diagrama de Contexto apresenta uma visão geral do sistema e sua interação com o usuário.
 
 ![Diagrama de Contexto](contexto_container.png)
 
@@ -137,7 +154,7 @@ Arquivo PlantUML:
 
 ## Diagrama de Contêiner — C4 Nível 2
 
-O diagrama apresenta os principais componentes da aplicação e sua relação com o funcionamento do sistema.
+O Diagrama de Contêiner apresenta os principais componentes da aplicação e sua relação com o funcionamento do sistema.
 
 ![Diagrama de Contêiner](contexto_container.png)
 
@@ -147,9 +164,9 @@ Arquivo PlantUML:
 
 ---
 
-## Diagrama de Banco de Dados
+## Diagrama de Banco de Dados — DER
 
-O diagrama representa a estrutura dos dados utilizados pelo sistema.
+O Diagrama Entidade-Relacionamento representa a estrutura dos dados utilizados pelo sistema.
 
 ![Diagrama de Banco de Dados](diagrama_banco.png)
 
@@ -159,15 +176,35 @@ Arquivo PlantUML:
 
 ---
 
-## Fluxograma do Processo de Cálculo
+## Fluxograma do Processo
 
-O fluxograma representa o processo relacionado ao controle e cálculo dos custos.
+O fluxograma representa o processo relacionado ao controle e cálculo dos custos da produção.
 
 ![Fluxograma do Processo](fluxo_calculo.png)
 
 Arquivo PlantUML:
 
 `fluxo_calculo.puml`
+
+---
+
+# Aplicação Online
+
+A aplicação está hospedada no PythonAnywhere e pode ser acessada pelo endereço:
+
+**https://pedromanoel.pythonanywhere.com/re**
+
+O sistema disponibiliza funcionalidades de cadastro de animais, controle de custos, associação de despesas, consultas e relatórios.
+
+---
+
+# Documentação e Apresentação
+
+Os arquivos de documentação e apresentação estão disponíveis no repositório.
+
+O Pitch Deck está localizado em:
+
+`docs/pitch_deck.pdf`
 
 ---
 
@@ -187,10 +224,9 @@ vaca_parida/
 ├── app.py
 ├── modelos/
 ├── static/
-├── README.md
-├── README_EXECUCAO.md
-├── requirements.txt
-├── vaca_parida.db
+├── templates/
+├── docs/
+│   └── pitch_deck.pdf
 │
 ├── contexto.puml
 ├── contexto_container.puml
@@ -199,4 +235,6 @@ vaca_parida/
 ├── diagrama_banco.png
 ├── fluxo_calculo.puml
 ├── fluxo_calculo.png
-└── docs/
+│
+├── requirements.txt
+└── README.md
