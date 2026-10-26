@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+<div class="field-pattern" aria-hidden="true"></div>
 <div class="layout">
+    <div class="store-strip">GESTÃO DA PROPRIEDADE <span>REBANHO • CUSTOS • RESULTADOS</span></div>
     <aside class="sidebar">
         <a class="brand" href="{{ url_for('index') }}">
-            <span class="brand-icon">🐄</span>
+            <span class="brand-icon">VP</span>
             <span>
                 <strong>Vaca Parida</strong>
-                <small>Gestão Rural</small>
+                <small>GESTÃO DA PROPRIEDADE RURAL</small>
             </span>
         </a>
 
@@ -32,7 +34,8 @@
             </a>
         </nav>
 
-        <div class="sidebar-bottom">
+        <div class="sidebar-bottom"><div class="user-chip">● {{ session.usuario }}<form method="post" action="{{ url_for('logout') }}">
+<input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="logout-button" type="submit">Sair da conta ↗</button></form></div>
             <div class="mini-card">
                 <span>Rebanho cadastrado</span>
                 <strong>{{ stats.animais }}</strong>
@@ -44,7 +47,7 @@
     <main class="main">
         <header class="topbar">
             <div>
-                <p class="eyebrow">SISTEMA DE CONTROLE</p>
+                <p class="eyebrow">PAINEL DA PROPRIEDADE / VACA PARIDA</p>
                 <h1>{% block page_title %}Visão geral{% endblock %}</h1>
             </div>
             <a class="btn btn-primary" href="{{ url_for('novo_animal') }}">+ Novo animal</a>

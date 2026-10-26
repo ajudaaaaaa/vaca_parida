@@ -9,6 +9,7 @@
             <div><span class="eyebrow">CADASTRO DO REBANHO</span><h3>{{ "Atualize os dados" if animal else "Cadastre um novo animal" }}</h3></div>
         </div>
         <form method="post" class="form-grid">
+<input type="hidden" name="csrf_token" value="{{ csrf_token }}">
             <label>Brinco *<input name="brinco" required value="{{ animal.brinco if animal else '' }}" placeholder="Ex.: 102"></label>
             <label>Tipo *
                 <select name="tipo" required>

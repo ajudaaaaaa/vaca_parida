@@ -19,3 +19,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 4500);
     });
 });
+
+document.querySelectorAll('form[action*="excluir"]').forEach(form => form.addEventListener('submit', event => { if(!confirm('Confirma a exclusão? Esta ação não pode ser desfeita.')) event.preventDefault(); }));

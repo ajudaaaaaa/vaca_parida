@@ -10,6 +10,7 @@
 <section class="panel">
     <div class="panel-head"><div><span class="eyebrow">NOVO LANÇAMENTO</span><h3>Registrar custos</h3></div></div>
     <form method="post" class="form-grid">
+<input type="hidden" name="csrf_token" value="{{ csrf_token }}">
         <label>Animal relacionado
             <select name="animal_id">
                 <option value="">Custo geral da propriedade</option>
@@ -42,7 +43,8 @@
                 <td>{{ item.data or "—" }}</td>
                 <td class="money">R$ {{ "%.2f"|format(item.valor) }}</td>
                 <td>
-                    <form method="post" action="{{ url_for('excluir_custo', id=item.id) }}" onsubmit="return confirm('Excluir este lançamento?')">
+                    <form method="post" action="{{ url_for('excluir_custo', id=item.id) }}" >
+<input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                         <button class="btn btn-small btn-danger" type="submit">Excluir</button>
                     </form>
                 </td>

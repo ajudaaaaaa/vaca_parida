@@ -31,7 +31,8 @@
                     <td>{{ "%.1f"|format(animal.peso or 0) }} kg</td>
                     <td class="actions">
                         <a class="btn btn-small" href="{{ url_for('editar_animal', id=animal.id) }}">Editar</a>
-                        <form method="post" action="{{ url_for('excluir_animal', id=animal.id) }}" onsubmit="return confirm('Excluir este animal?')">
+                        <form method="post" action="{{ url_for('excluir_animal', id=animal.id) }}" >
+<input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                             <button class="btn btn-small btn-danger" type="submit">Excluir</button>
                         </form>
                     </td>
